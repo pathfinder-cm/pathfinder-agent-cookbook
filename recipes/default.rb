@@ -18,6 +18,13 @@ pathfinder_agent_binary_install service_name do
   group node[cookbook_name]['group']
 end
 
+env_vars_file = node[cookbook_name]['env_vars_file']
+pathfinder_agent_env_vars_file env_vars_file do
+  env_vars node[cookbook_name]['env_vars']
+  user node[cookbook_name]['user']
+  group node[cookbook_name]['group']
+end
+
 bin = "#{node[cookbook_name]['prefix_bin']}/#{service_name}"
 pathfinder_agent_binary_systemd service_name do
   cli_opts node[cookbook_name]['cli_opts']

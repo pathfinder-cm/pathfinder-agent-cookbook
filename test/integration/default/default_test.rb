@@ -21,6 +21,10 @@ describe file('/opt/bin/pathfinder-agent') do
   its('mode') { should cmp '0755' }
 end
 
+describe file('/etc/default/pathfinder-agent') do
+  its('mode') { should cmp '0600' }
+end
+
 describe systemd_service('pathfinder-agent') do
   it { should be_installed }
   it { should be_enabled }

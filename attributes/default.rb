@@ -30,6 +30,11 @@ default[cookbook_name]['mirror'] =
   "https://github.com/pathfinder-cm/pathfinder-agent/releases/download/#{agent_version}/#{agent_binary}"
 default[cookbook_name]['service_name'] = 'pathfinder-agent'
 
+# Environment variables
+default[cookbook_name]['prefix_env_vars'] = '/etc/default'
+default[cookbook_name]['env_vars_file'] = "#{node[cookbook_name]['prefix_env_vars']}/#{node[cookbook_name]['service_name']}"
+default[cookbook_name]['env_vars'] = {}
+
 # Agent daemon options, used to create the ExecStart option in service
 default[cookbook_name]['cli_opts'] = ['-V']
 
